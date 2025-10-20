@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIRTHDAY</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe6f2;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: hotpink;
+    }
+
+    fieldset {
+      background-color: lightpink;
+      border-radius: 10px;
+      padding: 20px;
+      width: 80%;
+      margin: 20px auto;
+      border: 2px solid deeppink;
+      line-height: 1.6;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 20px auto;
+      background-color: white;
+      border: 2px solid pink;
+    }
+
+    th {
+      background-color: hotpink;
+      color: white;
+      padding: 12px;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    td {
+      border: 1px solid pink;
+      padding: 10px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #ffe6f2;
+    }
+
+    /* Dress Code Section */
+    .dresscode {
+      margin: 40px auto;
+      background-color: white;
+      width: 90%;
+      max-width: 900px;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+    }
+
+    .dresscode h2 {
+      margin-bottom: 10px;
+    }
+
+    /* Two Column Dress Code Layout */
+    .dresscode-container {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .dresscode-box {
+      background-color: #fff0f5;
+      border: 3px solid hotpink;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+      width: 300px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 480px; /* fixed equal height */
+    }
+
+    .dresscode-box h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: hotpink;
+    }
+
+    .dresscode-box p {
+      font-size: 17px;
+      color: #cc0066;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .dresscode-box img {
+      height: 220px;
+      width: auto;
+      border-radius: 10px;
+      border: 2px solid hotpink;
+      margin-top: 10px;
+      object-fit: cover;
+      align-self: center;
+    }
+
+    /* Surprise Button */
+    .surprise-btn {
+      display: block;
+      margin: 200px auto;
+      background-color: hotpink;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 15px;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255,105,180,0.4);
+      transition: 0.3s;
+    }
+
+    .surprise-btn:hover {
+      background-color: deeppink;
+      transform: scale(1.05);
+    }
+
+    /* Hidden invitation content */
+    .content {
+      display: none;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Popup box */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background-color: #fff0f5;
+      border: 3px solid hotpink;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      width: 300px;
+      box-shadow: 0 0 15px rgba(255,105,180,0.5);
+      transform: scale(0);
+      animation: pop 0.4s ease forwards;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .popup-content h2 {
+      color: hotpink;
+      margin-bottom: 10px;
+    }
+
+    .popup-content p {
+      color: #cc0066;
+      font-weight: bold;
+    }
+
+    .popup-content img {
+      width: 100%;
+      border-radius: 15px;
+      border: 2px solid hotpink;
+      margin-bottom: 10px;
+    }
+
+    .close-btn {
+      background-color: hotpink;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* last list */
+    .list-section {
+      width: 80%;
+      margin: 40px auto;
+      background-color: #fff0f8;
+      border: 3px solid hotpink;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 8px rgba(255,105,180,0.3);
+    }
+
+    .list-section h2 {
+      color: hotpink;
+      margin-bottom: 10px;
+    }
+
+    .name-lists {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 40px;
+      text-align: left;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 17px;
+      color: #cc0066;
+    }
+
+    ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="surprise-btn" onclick="openPopup()">CLICK HERE FOR A SURPRISE!</button>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <img src="me.jpg" alt="Birthday Girl">
+      <h2>You’re Finally Invited!</h2>
+      <p>Welcome to Nikke’s 18th Birthday on October 24!</p>
+      <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <div id="content" class="content">
+    <h1><b>18th BIRTHDAY OF NIKKE</b></h1>
+
+    <fieldset>
+      <p><b>If you’re surprised why I did this, it’s because I’m taking Bachelor of Science in Computer Science.</b></p>
+      <p>Thank you so much for accepting my invitation card! It truly means a lot to me that you’ll be part of my special day.
+      I’m so excited to celebrate with you on <b>October 24!</b> Please note that the time might adjust depending on my class schedule.
+      I’ll make sure to update you ahead of time so everything runs smoothly. Once again, thank you for taking the time to come and celebrate this milestone with me.
+      Your presence will make my birthday even more memorable. See you soon, and let’s create beautiful memories together!</p>
+      <p><b>Bring your swimwear (beachwear, one-piece, two-piece, rash guard, or cover-up)</b></p>
+      <b>VENUE CHANGES: ABUHAN HOUSE OF POCHERO (MAMBALING), NEAR CIT | SCROLL DOWN SO YOU CAN SEE THE VENUE </b>
+    </fieldset>
+
+    <table>
+      <tr>
+        <th>Time</th>
+        <th>Activity</th>
+        <th>Details</th>
+      </tr>
+      <tr><td><b>5:00 PM</b></td><td>Arrival of Guests</td><td>Picture taking and short introductions</td></tr>
+      <tr><td><b>5:30 PM</b></td><td>Opening Program</td><td>Prayer, welcome remarks, emcee message, and parents’ speech</td></tr>
+      <tr><td><b>6:00 - 6:30 PM</b></td><td>18 Roses & 18 Candles/Treasures</td><td>Dance and candle message program</td></tr>
+      <tr><td><b>7:00 PM</b></td><td>Dinner Time</td><td>Buffet and sharing moments</td></tr>
+      <tr><td><b>After Dinner</b></td><td>Party Time</td><td>Dancing, singing, games, and swimming</td></tr>
+    </table>
+
+    <div class="dresscode">
+      <h2>Dress Code</h2>
+      <div class="dresscode-container">
+        <div class="dresscode-box">
+          <h3>Girls</h3>
+          <p>Please wear a dress</p>
+            <p><b>(avoid wearing white).</b></p>
+          <p> Example: shades of pink blush, rose, dusty pink, baby pink, or hot pink. Matches the venue and gives a soft, feminine vibe.</p>
+          <img src="girls.jpg" alt="Girls Dress Example">
+        </div>
+
+        <div class="dresscode-box">
+          <h3>Men</h3>
+          <p>Casual attire</p>
+          <p><b>(avoid wearing black).</b></p>
+          <p>Example:classic, and complements the venue perfectly.</p>
+          <img src="boys.jpg" alt="Men Casual Example">
+        </div>
+      </div>
+    </div>
+
+    <h2 style="color: hotpink;">📍 Venue Map</h2>
+    <div style="display: flex; justify-content: center; margin: 30px;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!4v1739709300000!6m8!1m7!1sCAoSLEFGMVFpcE5hVnNiNVVpbzdKMzB5Y3hDNjdtRE5abW9yZ3JUVTF2VFBaSjFw!2m2!1d10.292861!2d123.879648!3f0!4f0!5f0.7820865974627469" 
+        width="600" height="400" style="border:3px solid hotpink; border-radius:15px;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+<fieldset>
+  <legend><B>YOU MUST READ THIS ONE! </B></legend>
+    <h3>With all due respect, if you know that I have friends who are not invited, please do not invite them because they will not be allowed to enter the venue. The place is restricted.
+     I also need to invite my relatives from Lapu-Lapu. If you want to bring a friend, your girlfriend, or boyfriend  they need to pay ₱500 per head  becaause we have a limited slots. </h3>
+</fieldset>
+    <table>
+      <tr><th>Roses</th><th>Candles & Treasure</th></tr>
+      <tr><td>Java, Paulino</td><td>Java, Glenda</td></tr>
+      <tr><td>Java, John Nathaniel</td><td>Baclayon, Cherrelyn</td></tr>
+      <tr><td>Robillos, Matthew John</td><td>Java, Angelina</td></tr>
+      <tr><td>Armada, Rico Mark</td><td>Java, Maria Hazel</td></tr>
+      <tr><td>Procalla, Jake Clarence</td><td>Java, Tonette</td></tr>
+      <tr><td>Lauron, Morning Star</td><td>Navasquez, Kimmy</td></tr>
+      <tr><td>Debalucos, Alfredo Jr.</td><td>Ongy, Mona</td></tr>
+      <tr><td>Pedraya, John Rey</td><td>Procalla, Bea</td></tr>
+      <tr><td>Polancos, Ray</td><td>Chua, Mary Therese</td></tr>
+      <tr><td>Gargar, Elvin John</td><td>Balagulan, Princess</td></tr>
+      <tr><td>Gonzales, Kirby</td><td>Pilleren, Joanne</td></tr>
+      <tr><td>Ladao, Elberth</td><td>Sumo, Jen</td></tr>
+      <tr><td>Estropia, Wilhelm Einar</td><td>Ladao, Monica</td></tr>
+      <tr><td>Bequilla, James</td><td>Vestil, Grace</td></tr>
+      <tr><td>Vicentino, Ken</td><td>Mary Rose</td></tr>
+      <tr><td>Ygonia, John Clarence</td><td>Bucao, Christine Ann</td></tr>
+      <tr><td>Ulfpindo, Joboy Adrian</td><td>Sibl, Ellah</td></tr>
+    </table>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById('popup').style.display = 'flex';
+    }
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.querySelector('.surprise-btn').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
